@@ -68,20 +68,10 @@ void loop()
 
   float uvIntensity = mapfloat(outputVoltage, 0.99, 2.8, 0.0, 15.0); //Convert the voltage to a UV intensity level
 
-  Serial.print("output: ");
-  Serial.print(refLevel);
-
-  Serial.print("ML8511 output: ");
-  Serial.print(uvLevel);
-
-  Serial.print(" / ML8511 voltage: ");
-  Serial.print(outputVoltage);
-
-  Serial.print(" / UV Intensity (mW/cm^2): ");
-  Serial.print(uvIntensity);
-
-  Serial.println();
-  Serial.print(int(uvIntensity*5.667));
+  uvIntensity = uvIntensity * 2.634 - 2.424;
+  if (uvIntensity < 0){
+    uvIntensity=0;
+  }
 
   Serial.println();
 
